@@ -34,6 +34,18 @@ def randomtimes(start_date, end_date, n):
         resultSet.add(tmp.strftime(frmt).replace("\'","\"",2))
     return resultSet
 
+def randomtimesV2(start_date, n):
+    frmt = "%Y-%m-%d %H:%M"
+    stime = datetime.datetime.strptime(start_date, frmt)
+    # can set differnt step time
+    step = datetime.timedelta(days=1, hours= 2)
+    # "dateTime" should be unique to act as primary key
+    resultSet = []
+    for _ in range(n):
+        resultSet.append(stime.strftime(frmt).replace("\'","\"",2))
+        stime += step
+    return resultSet
+
 for i in range(file_NUMBER):
     output_content_list = {}
     # granularityRecord geneations
@@ -43,12 +55,12 @@ for i in range(file_NUMBER):
     output_content_list["granularityRecord"]["Metric"] = Metric_Setter
     # Values generation
     dt_values_list = []
-    dt_set =  randomtimes(start_date, end_date, values_LENGTH)
+    dt_set =  randomtimesV2(start_date, values_LENGTH)
     for dt_item in dt_set:
         dt_dict = {}
         dt_dict["dateTime"] = dt_item
         dt_dict["baseline"] = random.randint(100000, 999999)
-        dt_values_list .append(dt_dict)
+        dt_values_list.append(dt_dict)
     output_content_list["values"] = dt_values_list 
     # convert into JSON:
     with open("json_example" + str(i) + ".json", "w") as outfile:
