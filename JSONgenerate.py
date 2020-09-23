@@ -34,7 +34,7 @@ def randomtimes(start_date, end_date, n):
         resultSet.add(tmp.strftime(frmt).replace("\'","\"",2))
     return resultSet
 
-def randomtimesV2(start_date, n):
+def genearte_seq_times(start_date, n):
     frmt = "%Y-%m-%d %H:%M"
     stime = datetime.datetime.strptime(start_date, frmt)
     # can set differnt step time
@@ -55,7 +55,7 @@ for i in range(file_NUMBER):
     output_content_list["granularityRecord"]["Metric"] = Metric_Setter
     # Values generation
     dt_values_list = []
-    dt_set =  randomtimesV2(start_date, values_LENGTH)
+    dt_set = genearte_seq_times(start_date, values_LENGTH)
     for dt_item in dt_set:
         dt_dict = {}
         dt_dict["dateTime"] = dt_item
