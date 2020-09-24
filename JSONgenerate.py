@@ -4,6 +4,7 @@ Generate JSON file with fixed format
 Format description: https://gist.github.com/njuyangyang/835338c83e88c49e71939aee33d40505
 
 Created: 2020-09-19
+Modified:2020-09-24
 
 """
 # Import packages
@@ -60,6 +61,7 @@ for i in range(file_NUMBER):
         dt_dict = {}
         dt_dict["dateTime"] = dt_item
         dt_dict["baseline"] = random.randint(100000, 999999)
+        dt_dict["override"] = random.randint(100000, 200000)
         dt_values_list.append(dt_dict)
     output_content_list["values"] = dt_values_list 
     # convert into JSON:
