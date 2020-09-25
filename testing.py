@@ -1,7 +1,11 @@
 import json
 from itertools import combinations
 import sys
+"""
+This is a bad code verion
 
+Not to use this version directly
+"""
 
 # class GranularityRecord:
 #     def __init__(self, store, logisticType, metric):
